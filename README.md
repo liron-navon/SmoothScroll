@@ -21,7 +21,7 @@ smoothScroll.scrollToElement(document.getElementById('targetId')) // vanila
 smoothScroll.scrollToElement(this.$refs.myRefName) // vue
 smoothScroll.scrollToElement(this.myViewChild.nativeElement) // angular
 ```
-In order to configure the smooth scroll you can pass an object to the constructor:
+In order to configure the smooth scroll you can pass an object to the constructor (this are the default settings also seen in the demo):
 
 ```javascript
 let smoothScroll = new SmoothScroll({
