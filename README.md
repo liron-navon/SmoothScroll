@@ -45,21 +45,22 @@ let smoothScroll = new SmoothScroll({
 you can hook to when a scroll started and ended, obviously SmoothScroll wont produce onStartScroll when you call it programmatically, but will produce onScrollStart event:
 
 ```javascript
-            smoothScroll.scrollToElement(document.getElementById('point'), function(){
-                console.log("button scroll ended")
-            })
+smoothScroll.scrollToElement(document.getElementById('point'), function(){
+        console.log("button scroll ended")
+})
 ```
 
 A more usefull scenario is using the hooks when calling listenToAllInternalLinks:
 
 ```javascript
- smoothScroll.listenToAllInternalLinks(onScrollEnd,onScrollStart);
-        function onScrollStart(targetElement , clickEvent) {
-            console.log(`Going to element: ${targetElement.id}`);
-        }
-        function onScrollEnd(targetElement){
-            console.log(`Got to element: ${targetElement.id}`);
-        }
+smoothScroll.listenToAllInternalLinks(onScrollEnd,onScrollStart);
+
+function onScrollStart(targetElement , clickEvent) {
+        console.log(`Going to element: ${targetElement.id}`);
+}
+function onScrollEnd(targetElement){
+        console.log(`Got to element: ${targetElement.id}`);
+}
 ```
 
 
