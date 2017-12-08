@@ -3,7 +3,7 @@
 Watch the demo! 
 https://codepen.io/liron42/full/bYXeKj/
 
-A small lightwaight (2.26 KB) library to implement browser smooth scroll without jquary, and with easy settings
+A small lightwaight (2.33 KB) library to implement browser smooth scroll without jquary, and with easy settings
 
 you can download it or use the rawgit cdn which serve the file directly from this repository:
 ```
@@ -39,3 +39,27 @@ let smoothScroll = new SmoothScroll({
         targetHeightPercentageFromTop: 50; /* percentage from top for the element to be: 100 will make it scroll until the  element is at the bottom of the screen, and 50 will make it scroll until the element is at the center of the screen */
     });
 ```
+
+#Lifecycle hooks
+
+you can hook to when a scroll started and ended, obviously SmoothScroll wont produce onStartScroll when you call it programmatically, but will produce onScrollStart event:
+
+```javascript
+            smoothScroll.scrollToElement(document.getElementById('point'), function(){
+                console.log("button scroll ended")
+            })
+```
+
+A more usefull scenario is using the hooks when calling listenToAllInternalLinks:
+
+```javascript
+ smoothScroll.listenToAllInternalLinks(onScrollEnd,onScrollStart);
+        function onScrollStart(targetElement , clickEvent) {
+            console.log(`Going to element: ${targetElement.id}`);
+        }
+        function onScrollEnd(targetElement){
+            console.log(`Got to element: ${targetElement.id}`);
+        }
+```
+
+
