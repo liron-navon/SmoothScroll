@@ -136,7 +136,7 @@ listenToAllInternalLinks() {
                 return;
             }
 
-            scroller.scrollToElement(targetElement);
+            this.scrollToElement(targetElement);
 
         });
     })
