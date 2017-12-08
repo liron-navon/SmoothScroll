@@ -1,4 +1,4 @@
-# SmoothScroll
+# SmoothScroll.js
 A small lightwaight library to implement browser smooth scroll without jquary, and with easy settings
 
 It is very easy to setup by just calling:
