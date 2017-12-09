@@ -41,7 +41,8 @@ let smoothScroll = new SmoothScroll({
         stepSize: 1 // applied only when using fixed calculation - the number of pixels to traverse per frame
     });
 ```
-calculation can be either 'fixed' or 'time'
+calculation can be either 'fixed' or 'time'.
+
 when using calculation:'fixed', the scrollTime is not accounted, and when using calculation:'time' the stepSize is ignored (it's being calculated to fit the time frame)
 
 **Lifecycle hooks**
