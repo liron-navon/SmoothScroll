@@ -18,6 +18,13 @@ stepSize: size of step when using fixed calculation method
             stepSize: 1
         };
 
+        const scrollElementSelector = prefs.el ? prefs.el : this.settings.el;
+        this.scrollElement = document.querySelector(scrollElementSelector);
+
+        if(!prefs){
+            return;
+        }
+
         if(prefs.targetHeightPercentageFromTop){
             this.settings.targetHeightPercentageFromTop = (Math.min(Math.max( prefs.targetHeightPercentageFromTop, 1), 100) / 100);
         }
@@ -30,9 +37,6 @@ stepSize: size of step when using fixed calculation method
         if(prefs.calculation){
             this.settings.calculation = prefs.calculation;
         }
-
-        const scrollElementSelector = prefs.el ? prefs.el : this.settings.el;
-        this.scrollElement = document.querySelector(scrollElementSelector);
 
     }
 
