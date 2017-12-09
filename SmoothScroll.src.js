@@ -1,33 +1,39 @@
 let SmoothScroll = class {
 
-    /*
-    settingsObject:
+ /*
+settingsObject:
 el: scroll element selector
 targetHeightPercentageFromTop: how high the target should be from the top
 scrollElement: time for each scroll in milliseconds
+calculation: wither time or fixed
+stepSize: size of step when using fixed calculation method
 */
     constructor(prefs) {
 
-        const DefaultPrefs = {
+        this.settings = {
             el: 'html',
             scrollTime: 1000,
-            targetHeightPercentageFromTop: 50
+            targetHeightPercentageFromTop: 0.5,
+            calculation: 'time',
+            stepSize: 1
         };
 
-        const heightPercentageFromTop = prefs.targetHeightPercentageFromTop ? prefs.targetHeightPercentageFromTop : DefaultPrefs.targetHeightPercentageFromTop;
-        const scrollElementSelector = prefs.el ? prefs.el : DefaultPrefs.el;
+        if(prefs.targetHeightPercentageFromTop){
+            this.settings.targetHeightPercentageFromTop = (Math.min(Math.max( prefs.targetHeightPercentageFromTop, 1), 100) / 100);
+        }
+        if(prefs.scrollTime){
+            this.settings.scrollTime =   prefs.scrollTime;
+        }
+        if(prefs.stepSize){
+            this.settings.stepSize =   prefs.stepSize;
+        }
+        if(prefs.calculation){
+            this.settings.calculation = prefs.calculation;
+        }
 
+        const scrollElementSelector = prefs.el ? prefs.el : this.settings.el;
         this.scrollElement = document.querySelector(scrollElementSelector);
 
-        if(!prefs.scrollTime){
-            prefs.scrollTime = DefaultPrefs.scrollTime;
-        }
-
-        this.settings = {
-            scrollTime: prefs.scrollTime,
-            //calculate the height percentage from the top of the browser window and clamp it to a value between 1 and 100
-            targetHeightPercentageFromTop : (Math.min(Math.max(heightPercentageFromTop, 1), 100) / 100)
-        }
     }
 
     /*
@@ -44,7 +50,18 @@ scrollElement: time for each scroll in milliseconds
         const targetPosition = scrollParams.targetPosition;
         const totalNeededChange = Math.abs(this.scrollElement.scrollTop - targetPosition);
 
-        let stepSize = (scrollParams.stepDirection * totalNeededChange) / (60 * (this.settings.scrollTime / 1000));
+        let stepSize;
+
+            if(this.settings.calculation === 'time'){
+                stepSize = (scrollParams.stepDirection * totalNeededChange) / (60 * (this.settings.scrollTime / 1000));
+            }else if(this.settings.calculation === 'fixed'){
+                stepSize = scrollParams.stepDirection * this.settings.stepSize;
+            }else {
+                console.error(`invalid calculation method: ${this.settings.calculation}`);
+                return;
+            }
+
+
 
         let checkCondition = () => {
             if (stepSize < 0) {
