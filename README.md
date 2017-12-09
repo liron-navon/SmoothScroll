@@ -35,13 +35,13 @@ In order to configure the smooth scroll you can pass an object to the constructo
 ```javascript
 let smoothScroll = new SmoothScroll({
         el:'html', // an html element to use as a scroll medium (for things like scrolling inside a div)
-        scrollTime: 1000, // the time for each scroll in milliseconds (from current position to the target's position)
+        scrollTime: 1000, // applied only when using time calculation - the time for each scroll in milliseconds (from current position to the target's position)
         targetHeightPercentageFromTop: 50, /* percentage from top for the element to be: 100 will make it scroll until the  element is at the bottom of the screen, and 50 will make it scroll until the element is at the center of the screen */
         calculation: 'time', //calculation is by either time, or a pace with fixed scroll length per frame
         stepSize: 1 // applied only when using fixed calculation - the number of pixels to traverse per frame
     });
 ```
-
+calculation can be either 'fixed' or 'time'
 when using calculation:'fixed', the scrollTime is not accounted, and when using calculation:'time' the stepSize is ignored (it's being calculated to fit the time frame)
 
 **Lifecycle hooks**
