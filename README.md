@@ -3,7 +3,7 @@
 Watch the demo! 
 https://codepen.io/liron42/full/bYXeKj/
 
-A small lightwaight (2.33 KB) library to implement browser smooth scroll without jquary, and with easy settings
+A small lightwaight (2.66 KB) library to implement browser smooth scroll without jquary, and with easy settings
 
 You can clone this repo and use the SmoothScroll.dist.min.js file, or you can use the rawgit cdn which serve the file directly from this repository:
 ```html
