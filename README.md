@@ -6,7 +6,7 @@ https://codepen.io/liron42/full/bYXeKj/
 A small lightwaight (2.33 KB) library to implement browser smooth scroll without jquary, and with easy settings
 
 You can clone this repo and use the SmoothScroll.dist.min.js file, or you can use the rawgit cdn which serve the file directly from this repository:
-```
+```html
 <script src="https://cdn.rawgit.com/liron-navon/SmoothScroll/master/SmoothScroll.dist.min.js"></script>
 ```
 
@@ -19,7 +19,7 @@ scroller.listenToAllInternalLinks(); // override all href links with internal id
 
 And in the html just use
 
-```
+```html
 <a href="#myInternalLinkId">go to some internal link smoothly</a>
 ```
 
