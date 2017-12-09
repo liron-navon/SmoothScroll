@@ -40,7 +40,7 @@ let smoothScroll = new SmoothScroll({
     });
 ```
 
-#Lifecycle hooks
+**Lifecycle hooks**
 
 you can hook to when a scroll started and ended, obviously SmoothScroll wont produce onStartScroll when you call it programmatically, but will produce onScrollStart event:
 
